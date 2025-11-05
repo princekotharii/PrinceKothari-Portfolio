@@ -1,0 +1,63 @@
+/* ==================== HOME PAGE ==================== */
+.home-page {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Smooth section transitions */
+.home-page section {
+  scroll-margin-top: 80px;
+}
+
+/* Add spacing between sections */
+.home-page section:not(#home) {
+  margin-top: 0;
+}
+
+/* Hero section full height */
+#home {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Section backgrounds */
+#about {
+  background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+}
+
+#timeline {
+  background: #0F172A;
+}
+
+#skills {
+  background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+}
+
+#projects {
+  background: #0F172A;
+}
+
+#contact {
+  background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .home-page section {
+    scroll-margin-top: 70px;
+  }
+}
+
+/* Print styles */
+@media print {
+  .home-page {
+    background: white;
+  }
+
+  .home-page section {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
