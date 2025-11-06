@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenu, HiX } from 'react-icons/hi'
 import './Navbar.css'
@@ -9,6 +9,7 @@ const Navbar = () => {
   const [scrolled, setScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState('home')
   const location = useLocation()
+  const navigate = useNavigate()
 
   const navLinks = [
     { name: 'Home', path: '#home', chapter: 'Prologue' },
@@ -45,17 +46,45 @@ const Navbar = () => {
   const handleNavClick = (e, path) => {
     e.preventDefault()
     const targetId = path.replace('#', '')
-    const element = document.getElementById(targetId)
-    
-    if (element) {
-      const offsetTop = element.offsetTop - 80
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      })
+
+    // Close the menu first so layout stabilizes, then scroll.
+    // Small delay ensures animations/layout collapse finish before computing offsets.
+    const scrollToTarget = () => {
+      const element = document.getElementById(targetId)
+
+      if (element) {
+        // compute a reliable top (accounting for page scroll)
+        const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        })
+        return
+      }
+
+      // If target isn't on this page (e.g., on another route), navigate to home then scroll.
+      if (location.pathname !== '/') {
+        // navigate to home, then wait a moment and scroll
+        navigate('/')
+        setTimeout(() => {
+          const el = document.getElementById(targetId)
+          if (el) {
+            const offsetTop2 = el.getBoundingClientRect().top + window.scrollY - 80
+            window.scrollTo({
+              top: offsetTop2,
+              behavior: 'smooth'
+            })
+          }
+        }, 350) // allow time for route change/render
+      }
     }
-    
+
+    // Close menu, allow next frame and a small timeout for CSS collapse/animation to complete
     setIsOpen(false)
+    requestAnimationFrame(() => {
+      // slight timeout to let AnimatePresence / CSS transitions finish
+      setTimeout(scrollToTarget, 60)
+    })
   }
 
   return (
@@ -68,8 +97,8 @@ const Navbar = () => {
       <div className="navbar-container">
         <div className="navbar-content">
           {/* Logo */}
-          <a 
-            href="#home" 
+          <a
+            href="#home"
             className="navbar-logo"
             onClick={(e) => handleNavClick(e, '#home')}
           >
@@ -88,7 +117,7 @@ const Navbar = () => {
             {navLinks.map((link) => {
               const sectionId = link.path.replace('#', '')
               const isActive = activeSection === sectionId
-              
+
               return (
                 <a
                   key={link.path}
@@ -119,6 +148,7 @@ const Navbar = () => {
             onClick={toggleMenu}
             className="mobile-menu-btn"
             aria-label="Toggle menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? (
               <HiX className="menu-icon" />
@@ -143,7 +173,7 @@ const Navbar = () => {
               {navLinks.map((link, index) => {
                 const sectionId = link.path.replace('#', '')
                 const isActive = activeSection === sectionId
-                
+
                 return (
                   <motion.div
                     key={link.path}
