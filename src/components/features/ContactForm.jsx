@@ -233,7 +233,7 @@ const ContactForm = () => {
             value={formData.name}
             onChange={handleChange}
             className={`form-input ${errors.name ? 'error' : ''}`}
-            placeholder="John Doe"
+            placeholder="Your Full Name"
           />
           {errors.name && (
             <p className="form-error">{errors.name}</p>
@@ -252,7 +252,7 @@ const ContactForm = () => {
             value={formData.email}
             onChange={handleChange}
             className={`form-input ${errors.email ? 'error' : ''}`}
-            placeholder="john@example.com"
+            placeholder="prince@example.com"
           />
           {errors.email && (
             <p className="form-error">{errors.email}</p>
