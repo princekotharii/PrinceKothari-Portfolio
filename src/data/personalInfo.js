@@ -18,7 +18,7 @@ export const personalInfo = {
   // Contact Information
   email: "prince.kothari@example.com",
   phone: "+91 ###########",
-  location: "Mumbai, India",
+  location: "Uttarakhand, India",
   
   // Social Links
   social: {
@@ -34,8 +34,8 @@ export const personalInfo = {
   // Stats (displayed in Hero section)
   stats: {
     experience: "3+",
-    projects: "50+",
-    clients: "20+",
+    projects: "30+",
+    clients: "10+",
     awards: "10+"
   },
   
