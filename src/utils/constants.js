@@ -44,7 +44,7 @@ export const NAV_LINKS = [
 export const SOCIAL_LINKS = {
   github: 'https://github.com/princekotharii',
   linkedin: 'https://linkedin.com/in/princekotharii',
-  twitter: 'https://twitter.com/princekotharii',
+  twitter: 'https://www.linkedin.com/in/princekothari/',
   instagram: 'https://instagram.com/princekotharii',
   email: 'prince.kothari@example.com',
 }
@@ -52,9 +52,9 @@ export const SOCIAL_LINKS = {
 // EmailJS Configuration
 // 👉 Sign up at https://www.emailjs.com/ and get your credentials
 export const EMAILJS_CONFIG = {
-  serviceId: 'YOUR_SERVICE_ID',      // Replace with your EmailJS service ID
-  templateId: 'YOUR_TEMPLATE_ID',    // Replace with your EmailJS template ID
-  userId: 'YOUR_USER_ID',            // Replace with your EmailJS user ID
+  serviceId: 'service_xazn32i',      // Replace with your EmailJS service ID
+  templateId: 'template_okdz7ah',    // Replace with your EmailJS template ID
+  userId: 'gheaNKV2ihLetpbaE',            // Replace with your EmailJS user ID
 }
 
 // API Endpoints (if you have backend)
