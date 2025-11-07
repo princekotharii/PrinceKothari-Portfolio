@@ -1,14 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { motion, useScroll, useTransform } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { HiDownload, HiArrowRight, HiArrowDown } from 'react-icons/hi'
 import { personalInfo } from '../../data/personalInfo'
 import ParticleBackground from '../features/ParticleBackground'
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const { scrollY } = useScroll()
-  const opacity = useTransform(scrollY, [0, 300], [1, 0])
-  const scale = useTransform(scrollY, [0, 300], [1, 0.8])
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -26,10 +23,7 @@ const Hero = () => {
     const aboutSection = document.getElementById('about')
     if (aboutSection) {
       const offsetTop = aboutSection.offsetTop - 80
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      })
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' })
     }
   }
 
@@ -37,16 +31,13 @@ const Hero = () => {
     const contactSection = document.getElementById('contact')
     if (contactSection) {
       const offsetTop = contactSection.offsetTop - 80
-      window.scrollTo({
-        top: offsetTop,
-        behavior: 'smooth'
-      })
+      window.scrollTo({ top: offsetTop, behavior: 'smooth' })
     }
   }
 
   return (
     <>
-      <style>{`
+       <style>{`
         /* ==================== HERO CONTAINER ==================== */
         .hero-wrapper {
           position: relative;
@@ -481,10 +472,8 @@ const Hero = () => {
         }
       `}</style>
 
-      <motion.section 
-        className="hero-wrapper"
-        style={{ opacity, scale }}
-      >
+      {/* ✅ Removed opacity and scale effects */}
+      <motion.section className="hero-wrapper">
         <div className="hero-bg">
           <ParticleBackground />
           <div className="grid-pattern"></div>
@@ -553,7 +542,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Updated Scroll Indicator - Arrow Only */}
         <div className="scroll-indicator" onClick={scrollToAbout}>
           <span className="scroll-text">Scroll Down</span>
           <div className="scroll-arrow-wrapper">
