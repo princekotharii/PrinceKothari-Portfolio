@@ -52,9 +52,9 @@ export const SOCIAL_LINKS = {
 // EmailJS Configuration
 // 👉 Sign up at https://www.emailjs.com/ and get your credentials
 export const EMAILJS_CONFIG = {
-  serviceId: 'service_xazn32i',      // Replace with your EmailJS service ID
-  templateId: 'template_okdz7ah',    // Replace with your EmailJS template ID
-  userId: 'gheaNKV2ihLetpbaE',            // Replace with your EmailJS user ID
+  serviceId: import.meta.env.VITE_EMAILJS_SERVIVE_ID,      // Replace with your EmailJS service ID
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID,    // Replace with your EmailJS template ID
+  userId: import.meta.env.VITE_EMAILJS_PUBLIC_KEY,            // Replace with your EmailJS user ID
 }
 
 // API Endpoints (if you have backend)
