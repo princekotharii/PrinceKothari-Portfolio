@@ -1,19 +1,20 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { personalInfo } from '../../data/personalInfo'
+import { Book, User } from 'lucide-react'
 
 const AboutStory = () => {
   return (
     <>
       <style>{`
         .about-story {
-          max-width: 1024px;
+          max-width: 1200px;
           margin: 0 auto;
         }
 
         .about-header {
           text-align: center;
-          margin-bottom: 3rem;
+          margin-bottom: 4rem;
         }
 
         .about-badge {
@@ -41,8 +42,93 @@ const AboutStory = () => {
           background-clip: text;
         }
 
-        .about-content {
-          margin-bottom: 3rem;
+        /* Profile Image Section */
+        .profile-section {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          margin-bottom: 4rem;
+        }
+
+        .profile-image-wrapper {
+          position: relative;
+          width: 250px;
+          height: 250px;
+          margin-bottom: 2rem;
+        }
+
+        .profile-image-border {
+          position: absolute;
+          inset: -4px;
+          background: linear-gradient(135deg, #06B6D4, #8B5CF6, #EC4899);
+          border-radius: 50%;
+          animation: rotate 8s linear infinite;
+        }
+
+        @keyframes rotate {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+
+        .profile-image-container {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          overflow: hidden;
+          background: #1E293B;
+          border: 4px solid #0F172A;
+        }
+
+        .profile-image {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+
+        .profile-image-wrapper:hover .profile-image {
+          transform: scale(1.1);
+        }
+
+        .profile-image-placeholder {
+          width: 100%;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(139, 92, 246, 0.2));
+          color: #06B6D4;
+        }
+
+        .section-title {
+          font-size: 2rem;
+          font-weight: 700;
+          margin-bottom: 2rem;
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .section-title-icon {
+          color: #06B6D4;
+        }
+
+        /* About Me Section */
+        .about-me-section {
+          margin-bottom: 4rem;
+        }
+
+        .about-grid {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+          .about-grid {
+            grid-template-columns: 1fr 1fr;
+          }
         }
 
         .story-card {
@@ -50,6 +136,12 @@ const AboutStory = () => {
           border: 1px solid #334155;
           border-radius: 20px;
           padding: 2rem;
+          transition: all 0.3s ease;
+        }
+
+        .story-card:hover {
+          border-color: rgba(6, 182, 212, 0.5);
+          box-shadow: 0 10px 40px rgba(6, 182, 212, 0.15);
         }
 
         @media (min-width: 768px) {
@@ -69,6 +161,7 @@ const AboutStory = () => {
           margin-bottom: 0;
         }
 
+        /* Stats Section */
         .about-stats {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
@@ -89,7 +182,6 @@ const AboutStory = () => {
           background: #1E293B;
           border: 1px solid #334155;
           transition: all 0.3s ease;
-          cursor: pointer;
         }
 
         .about-stat-card:hover {
@@ -114,6 +206,7 @@ const AboutStory = () => {
           text-transform: capitalize;
         }
 
+        /* Availability Card */
         .availability-card {
           padding: 1.5rem;
           border-radius: 16px;
@@ -162,9 +255,15 @@ const AboutStory = () => {
           font-weight: 600;
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
           .about-header {
             margin-bottom: 2rem;
+          }
+
+          .profile-image-wrapper {
+            width: 200px;
+            height: 200px;
           }
 
           .story-card {
@@ -186,24 +285,79 @@ const AboutStory = () => {
           .stat-value-gradient {
             font-size: 2rem;
           }
+
+          .section-title {
+            font-size: 1.5rem;
+          }
         }
       `}</style>
 
       <div className="about-story">
-        <div className="about-header">
-          <span className="about-badge">Chapter I: The Journey</span>
+        {/* Header */}
+        <motion.div 
+          className="about-header"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="about-badge">Get to Know Me</span>
           <h2 className="about-title">
-            <span className="about-title-gradient">My Story</span>
+            <span className="about-title-gradient">About Me</span>
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="about-content">
-          <div className="story-card">
-            <p className="story-text">{personalInfo.story}</p>
-            <p className="story-text">{personalInfo.longBio}</p>
+        {/* Profile Image Section */}
+        {personalInfo.profileImage && (
+          <motion.div 
+            className="profile-section"
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className="profile-image-wrapper">
+              <div className="profile-image-border"></div>
+              <div className="profile-image-container">
+                {personalInfo.profileImage ? (
+                  <img 
+                    src={personalInfo.profileImage} 
+                    alt={`${personalInfo.name} - Profile`}
+                    className="profile-image"
+                  />
+                ) : (
+                  <div className="profile-image-placeholder">
+                    <User size={100} />
+                  </div>
+                )}
+              </div>
+            </div>
+          </motion.div>
+        )}
+
+        {/* About Me Section */}
+        <motion.div 
+          className="about-me-section"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <h3 className="section-title">
+            <Book className="section-title-icon" size={32} />
+            My Story
+          </h3>
+          <div className="about-grid">
+            <div className="story-card">
+              <p className="story-text">{personalInfo.story}</p>
+            </div>
+            <div className="story-card">
+              <p className="story-text">{personalInfo.longBio}</p>
+            </div>
           </div>
-        </div>
+        </motion.div>
 
+        {/* Stats Section */}
         <div className="about-stats">
           {Object.entries(personalInfo.stats).map(([key, value], index) => (
             <motion.div
@@ -223,6 +377,7 @@ const AboutStory = () => {
           ))}
         </div>
 
+        {/* Availability */}
         {personalInfo.status.available && (
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
