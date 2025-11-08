@@ -262,3 +262,120 @@
     font-size: 1rem;
   }
 }
+
+/* Add these new styles to your existing Navbar.css */
+
+/* Nav Actions Container */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Quick Links */
+.quick-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #94A3B8;
+  font-size: 1.25rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.quick-link:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.6);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+}
+
+/* Hire Me Button */
+.hire-me-btn {
+  padding: 0.625rem 1.5rem;
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.hire-me-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Mobile Quick Links */
+.mobile-quick-links {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  justify-content: center;
+  border-top: 1px solid rgba(51, 65, 85, 0.5);
+  margin-top: 1rem;
+}
+
+.mobile-quick-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: 12px;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  color: #94A3B8;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  flex: 1;
+}
+
+.mobile-quick-link span {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.mobile-quick-link:hover {
+  background: rgba(99, 102, 241, 0.1);
+  border-color: rgba(99, 102, 241, 0.6);
+}
+
+/* Mobile Hire Button */
+.mobile-hire-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: all 0.3s ease;
+}
+
+.mobile-hire-btn:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .nav-actions {
+    display: none;
+  }
+}

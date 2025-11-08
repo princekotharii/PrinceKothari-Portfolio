@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { HiMenu, HiX } from 'react-icons/hi'
+import { FaGithub, FaLinkedin, FaXTwitter } from 'react-icons/fa6'
+import { HiMail } from 'react-icons/hi'
+import { personalInfo } from '../../data/personalInfo'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -14,10 +17,32 @@ const Navbar = () => {
   const navLinks = [
     { name: 'Home', path: '#home', chapter: 'Prologue' },
     { name: 'About', path: '#about', chapter: 'Chapter I' },
-    { name: 'Journey', path: '#timeline', chapter: 'Chapter II' },
-    { name: 'Skills', path: '#skills', chapter: 'Chapter III' },
-    { name: 'Projects', path: '#projects', chapter: 'Chapter IV' },
+    { name: 'Education', path: '#education', chapter: 'Chapter II' },
+    { name: 'Achievements', path: '#achievements', chapter: 'Chapter III' },
+    { name: 'Skills', path: '#skills', chapter: 'Chapter IV' },
+    { name: 'Projects', path: '#projects', chapter: 'Chapter V' },
     { name: 'Contact', path: '#contact', chapter: 'Epilogue' },
+  ]
+
+  const quickLinks = [
+    { 
+      name: 'GitHub', 
+      url: personalInfo.social?.github || 'https://github.com/princekotharii',
+      icon: FaGithub,
+      color: '#6366F1'
+    },
+    { 
+      name: 'LinkedIn', 
+      url: personalInfo.social?.linkedin || 'https://linkedin.com/in/princekotharii',
+      icon: FaLinkedin,
+      color: '#0EA5E9'
+    },
+    { 
+      name: 'X', 
+      url: personalInfo.social?.twitter || 'https://twitter.com/princekotharii',
+      icon: FaXTwitter,
+      color: '#94A3B8'
+    },
   ]
 
   useEffect(() => {
@@ -25,7 +50,7 @@ const Navbar = () => {
       setScrolled(window.scrollY > 50)
 
       // Detect active section
-      const sections = ['home', 'about', 'timeline', 'skills', 'projects', 'contact']
+      const sections = ['home', 'about', 'education', 'achievements', 'skills', 'projects', 'contact']
       const current = sections.find(section => {
         const element = document.getElementById(section)
         if (element) {
@@ -47,13 +72,10 @@ const Navbar = () => {
     e.preventDefault()
     const targetId = path.replace('#', '')
 
-    // Close the menu first so layout stabilizes, then scroll.
-    // Small delay ensures animations/layout collapse finish before computing offsets.
     const scrollToTarget = () => {
       const element = document.getElementById(targetId)
 
       if (element) {
-        // compute a reliable top (accounting for page scroll)
         const offsetTop = element.getBoundingClientRect().top + window.scrollY - 80
         window.scrollTo({
           top: offsetTop,
@@ -62,9 +84,7 @@ const Navbar = () => {
         return
       }
 
-      // If target isn't on this page (e.g., on another route), navigate to home then scroll.
       if (location.pathname !== '/') {
-        // navigate to home, then wait a moment and scroll
         navigate('/')
         setTimeout(() => {
           const el = document.getElementById(targetId)
@@ -75,16 +95,25 @@ const Navbar = () => {
               behavior: 'smooth'
             })
           }
-        }, 350) // allow time for route change/render
+        }, 350)
       }
     }
 
-    // Close menu, allow next frame and a small timeout for CSS collapse/animation to complete
     setIsOpen(false)
     requestAnimationFrame(() => {
-      // slight timeout to let AnimatePresence / CSS transitions finish
       setTimeout(scrollToTarget, 60)
     })
+  }
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      const offsetTop = contactSection.getBoundingClientRect().top + window.scrollY - 80
+      window.scrollTo({
+        top: offsetTop,
+        behavior: 'smooth'
+      })
+    }
   }
 
   return (
@@ -143,6 +172,32 @@ const Navbar = () => {
             })}
           </div>
 
+          {/* Quick Links & Hire Me */}
+          <div className="nav-actions desktop-nav">
+            {quickLinks.map((link) => (
+              <motion.a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="quick-link"
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                title={link.name}
+              >
+                <link.icon style={{ color: link.color }} />
+              </motion.a>
+            ))}
+            <motion.button
+              onClick={scrollToContact}
+              className="hire-me-btn"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Hire Me
+            </motion.button>
+          </div>
+
           {/* Mobile Menu Button */}
           <button
             onClick={toggleMenu}
@@ -196,6 +251,28 @@ const Navbar = () => {
                   </motion.div>
                 )
               })}
+
+              {/* Mobile Quick Links */}
+              <div className="mobile-quick-links">
+                {quickLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mobile-quick-link"
+                  >
+                    <link.icon style={{ color: link.color }} />
+                    <span>{link.name}</span>
+                  </a>
+                ))}
+              </div>
+
+              {/* Mobile Hire Me Button */}
+              <button onClick={scrollToContact} className="mobile-hire-btn">
+                <HiMail />
+                <span>Hire Me</span>
+              </button>
             </div>
           </motion.div>
         )}
