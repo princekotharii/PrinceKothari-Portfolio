@@ -1,7 +1,8 @@
 import React from 'react'
 import Hero from '../components/sections/Hero'
 import About from '../components/sections/About'
-import Timeline from '../components/sections/Timeline'
+import Education from '../components/sections/Education'
+import Achievements from '../components/sections/Achievements'
 import Skills from '../components/sections/Skills'
 import Projects from '../components/sections/Projects'
 import Contact from '../components/sections/Contact'
@@ -20,9 +21,14 @@ const Home = () => {
         <About />
       </section>
 
-      {/* Timeline Section */}
-      <section id="timeline">
-        <Timeline />
+      {/* Education Section (Replaced Timeline) */}
+      <section id="education">
+        <Education />
+      </section>
+
+      {/* Achievements Section (NEW) */}
+      <section id="achievements">
+        <Achievements />
       </section>
 
       {/* Skills Section */}
