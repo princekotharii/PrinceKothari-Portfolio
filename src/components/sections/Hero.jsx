@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { motion } from 'framer-motion'
-import { HiDownload, HiArrowRight, HiArrowDown } from 'react-icons/hi'
+import { HiDownload, HiArrowRight } from 'react-icons/hi'
 import { personalInfo } from '../../data/personalInfo'
 import ParticleBackground from '../features/ParticleBackground'
 
@@ -19,14 +19,6 @@ const Hero = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove)
   }, [])
 
-  const scrollToAbout = () => {
-    const aboutSection = document.getElementById('about')
-    if (aboutSection) {
-      const offsetTop = aboutSection.offsetTop - 80
-      window.scrollTo({ top: offsetTop, behavior: 'smooth' })
-    }
-  }
-
   const scrollToContact = () => {
     const contactSection = document.getElementById('contact')
     if (contactSection) {
@@ -37,7 +29,7 @@ const Hero = () => {
 
   return (
     <>
-       <style>{`
+      <style>{`
         /* ==================== HERO CONTAINER ==================== */
         .hero-wrapper {
           position: relative;
@@ -356,80 +348,6 @@ const Hero = () => {
           font-weight: 500;
         }
 
-        /* ==================== SCROLL INDICATOR (ARROW ONLY) ==================== */
-        .scroll-indicator {
-          position: absolute;
-          bottom: 3rem;
-          left: 50%;
-          transform: translateX(-50%);
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.5rem;
-          cursor: pointer;
-          animation: fadeIn 0.8s ease-out 2s both;
-          transition: all 0.3s ease;
-          z-index: 10;
-        }
-
-        .scroll-indicator:hover {
-          transform: translateX(-50%) translateY(-5px);
-        }
-
-        .scroll-text {
-          font-size: 0.75rem;
-          color: #94A3B8;
-          text-transform: uppercase;
-          letter-spacing: 2px;
-          font-weight: 600;
-        }
-
-        .scroll-arrow-wrapper {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 0.25rem;
-        }
-
-        .scroll-arrow {
-          width: 40px;
-          height: 40px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          border-radius: 50%;
-          background: rgba(99, 102, 241, 0.1);
-          border: 2px solid rgba(99, 102, 241, 0.5);
-          transition: all 0.3s ease;
-        }
-
-        .scroll-indicator:hover .scroll-arrow {
-          background: rgba(99, 102, 241, 0.2);
-          border-color: #6366F1;
-          box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
-        }
-
-        .scroll-arrow-icon {
-          width: 24px;
-          height: 24px;
-          color: #6366F1;
-          animation: bounceArrow 2s ease-in-out infinite;
-        }
-
-        @keyframes bounceArrow {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(8px);
-          }
-        }
-
-        @keyframes fadeIn {
-          from { opacity: 0; }
-          to { opacity: 1; }
-        }
-
         @keyframes fadeInDown {
           from { opacity: 0; transform: translateY(-30px); }
           to { opacity: 1; transform: translateY(0); }
@@ -452,9 +370,6 @@ const Hero = () => {
           .stat-card { padding: 1.5rem 1rem; }
           .stat-value { font-size: 2.25rem; }
           .stat-label { font-size: 0.75rem; }
-          .scroll-indicator { bottom: 2rem; }
-          .scroll-arrow { width: 36px; height: 36px; }
-          .scroll-arrow-icon { width: 20px; height: 20px; }
           .gradient-orb { filter: blur(60px); opacity: 0.2; }
           .grid-pattern { background-size: 40px 40px; }
         }
@@ -467,12 +382,9 @@ const Hero = () => {
           .stat-card { padding: 1.25rem 0.875rem; }
           .stat-value { font-size: 2rem; }
           .grid-pattern { background-size: 30px 30px; }
-          .scroll-indicator { bottom: 1.5rem; }
-          .scroll-text { font-size: 0.625rem; }
         }
       `}</style>
 
-      {/* ✅ Removed opacity and scale effects */}
       <motion.section className="hero-wrapper">
         <div className="hero-bg">
           <ParticleBackground />
@@ -539,15 +451,6 @@ const Hero = () => {
                 <div className="stat-label">{key.replace(/([A-Z])/g, ' $1').trim()}</div>
               </motion.div>
             ))}
-          </div>
-        </div>
-
-        <div className="scroll-indicator" onClick={scrollToAbout}>
-          <span className="scroll-text">Scroll Down</span>
-          <div className="scroll-arrow-wrapper">
-            <div className="scroll-arrow">
-              <HiArrowDown className="scroll-arrow-icon" />
-            </div>
           </div>
         </div>
       </motion.section>
