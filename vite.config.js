@@ -10,6 +10,19 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: false
+    sourcemap: false,
+    chunkSizeWarningLimit: 1000, // Increase warning limit to 1000 KB
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          // Split React and related libraries
+          'react-vendor': ['react', 'react-dom'],
+          // Split React Router if you're using it
+          'router-vendor': ['react-router-dom'],
+          // Split EmailJS
+          'emailjs-vendor': ['@emailjs/browser'],
+        }
+      }
+    }
   }
 })
