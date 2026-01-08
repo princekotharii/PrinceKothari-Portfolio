@@ -31,10 +31,9 @@ const profileStatusSchema = new mongoose.Schema(
   }
 );
 
-// Ensure only one status document exists
-profileStatusSchema.pre('save', async function (next) {
+// Ensure only one status document exists - FIXED VERSION
+profileStatusSchema.pre('save', function () {
   this.singleton = true;
-  next();
 });
 
 const ProfileStatus = mongoose.model('ProfileStatus', profileStatusSchema);

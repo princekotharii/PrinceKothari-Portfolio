@@ -12,7 +12,7 @@ const adminSchema = new mongoose.Schema(
       match: [/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/, 'Please provide a valid email'],
     },
     password: {
-      type:  String,
+      type: String,
       required: [true, 'Password is required'],
       minlength: [6, 'Password must be at least 6 characters'],
       select: false, // Don't return password by default
@@ -30,15 +30,15 @@ const adminSchema = new mongoose.Schema(
   }
 );
 
-// Hash password before saving
-adminSchema. pre('save', async function (next) {
-  if (!this.isModified('password')) {
-    return next();
+// Hash password before saving - FIXED VERSION
+adminSchema.pre('save', async function () {
+  // Only hash if password is modified
+  if (! this.isModified('password')) {
+    return;
   }
   
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
-  next();
 });
 
 // Method to compare password
