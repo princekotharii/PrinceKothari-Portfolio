@@ -212,6 +212,25 @@
   color: var(--color-text-muted);
 }
 
+.form-input-error,
+.form-textarea.form-input-error {
+  border-color: #ef4444;
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.form-input-error:focus,
+.form-textarea.form-input-error:focus {
+  border-color: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-error {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
 .form-textarea {
   resize: vertical;
   min-height: 120px;

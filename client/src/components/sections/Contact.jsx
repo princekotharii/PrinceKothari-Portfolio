@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send, MessageSquare, User, FileText, CheckCircle, X } from 'lucide-react';
+import { sendEmail, validateForm } from '../../utils/emailService';
 import './Contact.css';
 
 const Contact = ({ data, isVisible }) => {
@@ -14,26 +15,36 @@ const Contact = ({ data, isVisible }) => {
   const [showSuccess, setShowSuccess] = useState(false);
   const [showError, setShowError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [errors, setErrors] = useState({});
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setShowError(false);
+    setErrors({});
 
-    // Simulate form submission (replace with your actual API call)
+    // Validate form
+    const validation = validateForm(formData);
+    if (!validation.isValid) {
+      setErrors(validation.errors);
+      return;
+    }
+
+    setIsSubmitting(true);
+
     try {
-      // Example:  await fetch('/api/contact', { method: 'POST', body:  JSON.stringify(formData) });
+      const result = await sendEmail(formData);
       
-      // Simulate delay
-      await new Promise(resolve => setTimeout(resolve, 2000));
-
-      setShowSuccess(true);
-      setFormData({ name: '', email:  '', subject: '', message: '' });
-      
-      setTimeout(() => {
-        setShowSuccess(false);
-      }, 5000);
-
+      if (result.success) {
+        setShowSuccess(true);
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        setTimeout(() => {
+          setShowSuccess(false);
+        }, 5000);
+      } else {
+        setErrorMessage(result.message);
+        setShowError(true);
+      }
     } catch (error) {
       console.error('Failed to send message:', error);
       setErrorMessage('Failed to send message. Please try again or email me directly.');
@@ -44,41 +55,49 @@ const Contact = ({ data, isVisible }) => {
   };
 
   const handleChange = (e) => {
+    const { name, value } = e.target;
     setFormData({
       ...formData,
-      [e.target. name]: e.target.value
+      [name]: value
     });
+    // Clear error for this field
+    if (errors[name]) {
+      setErrors({
+        ...errors,
+        [name]: ''
+      });
+    }
   };
 
   const contactInfo = [
     {
       icon: Mail,
       label: 'Email',
-      value: data?.email || 'your. email@example.com',
-      href: `mailto:${data?.email || 'your.email@example. com'}`,
+      value: data?.email || 'your.email@example.com',
+      href: `mailto:${data?.email || 'your.email@example.com'}`,
       color: '#a855f7'
     },
     {
       icon: Phone,
-      label:  'Phone',
-      value:  data?.phone || '+1 234 567 8900',
+      label: 'Phone',
+      value: data?.phone || '+1 234 567 8900',
       href: `tel:${data?.phone || '+1234567890'}`,
       color: '#3b82f6'
     },
     {
       icon: MapPin,
-      label:  'Location',
-      value:  data?.location || 'Your City, Country',
+      label: 'Location',
+      value: data?.location || 'Your City, Country',
       href: '#',
       color: '#10b981'
     }
   ];
 
   const socialLinks = [
-  { icon: Github, url: data?.githubLink || '#', label: 'GitHub' },
-  { icon: Linkedin, url: data?.linkedinLink || '#', label: 'LinkedIn' },
-  { icon: Twitter, url: data?.twitterLink || '#', label: 'Twitter' }
-];
+    { icon: Github, url: data?.githubLink || '#', label: 'GitHub' },
+    { icon: Linkedin, url: data?.linkedinLink || '#', label: 'LinkedIn' },
+    { icon: Twitter, url: data?.twitterLink || '#', label: 'Twitter' }
+  ];
 
   return (
     <section id="contact" className={`contact-section ${isVisible ? 'visible' : ''}`}>
@@ -165,8 +184,9 @@ const Contact = ({ data, isVisible }) => {
                   onChange={handleChange}
                   placeholder="John Doe"
                   required
-                  className="form-input"
+                  className={`form-input ${errors.name ? 'form-input-error' : ''}`}
                 />
+                {errors.name && <p className="form-error">{errors.name}</p>}
               </div>
 
               <div className="form-group">
@@ -182,8 +202,9 @@ const Contact = ({ data, isVisible }) => {
                   onChange={handleChange}
                   placeholder="john@example.com"
                   required
-                  className="form-input"
+                  className={`form-input ${errors.email ? 'form-input-error' : ''}`}
                 />
+                {errors.email && <p className="form-error">{errors.email}</p>}
               </div>
 
               <div className="form-group">
@@ -199,8 +220,9 @@ const Contact = ({ data, isVisible }) => {
                   onChange={handleChange}
                   placeholder="Project Inquiry"
                   required
-                  className="form-input"
+                  className={`form-input ${errors.subject ? 'form-input-error' : ''}`}
                 />
+                {errors.subject && <p className="form-error">{errors.subject}</p>}
               </div>
 
               <div className="form-group">
@@ -211,13 +233,14 @@ const Contact = ({ data, isVisible }) => {
                 <textarea
                   id="message"
                   name="message"
-                  value={formData. message}
+                  value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell me about your project..."
                   rows="5"
                   required
-                  className="form-textarea"
+                  className={`form-textarea ${errors.message ? 'form-input-error' : ''}`}
                 />
+                {errors.message && <p className="form-error">{errors.message}</p>}
               </div>
 
               <button 
