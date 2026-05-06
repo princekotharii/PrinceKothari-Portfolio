@@ -115,9 +115,22 @@ export const fallbackData = {
       status: "Completed",
       order: 1
     },
-    
     {
       _id: "2",
+      title: "Excel Grow",
+      description: "Effectiveness of the Classrooms Now in Your Hands.",
+      longDescription: "Modern, full‑stack tutoring and course marketplace inspired by Udemy. Designed for clean UX, fast discovery, and data‑driven course pages with real calculations for sections, lectures, and total hours.",
+      techStack: ["Next.js", "Node.js","Express","Cloudinary", "MongoDB","JWT","Tailwind CSS"],
+      category: "Full Stack",
+      githubLink: "https://github.com/TheForgeDevs/excel-grow",
+      liveLink: "https://journal-ykvt.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1778082441/Screenshot_2026-05-06_211641_iljumz.png",
+      featured: true,
+      status: "Completed",
+      order: 2
+    },
+    {
+      _id: "3",
       title: "Radheshyam Royal Residential ",
       description: "Modern Real Estate Experience for Premium Living",
       longDescription: "Developed a modern real estate web application focused on a clean, user-friendly, and conversion-driven experience. It showcases residential properties with structured layouts, highlighting key details like amenities, connectivity, and design. Built with responsive design, optimized performance, and scalable architecture for real-world use.",
@@ -128,10 +141,10 @@ export const fallbackData = {
       image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1778075656/Screenshot_2026-05-06_192221_ksx4x8.png",
       featured: true,
       status: "Completed",
-      order: 2
+      order: 3
     },
      {
-      _id: "3",
+      _id: "4",
       title: "Alpha-Lighting ",
       description: "💡Alpha is a modern lighting brand website featuring premium wall lights and fixtures.",
       longDescription: "Alpha is a fully responsive and visually polished website created for a modern lighting brand that specializes in wall lights, ceiling lights, table lamps, and ambient decorative lighting. The main objective of this project was to deliver a premium, minimal, and user-friendly experience that reflects the elegance and quality of the brand.",
@@ -140,12 +153,41 @@ export const fallbackData = {
       githubLink: "https://github.com/DevNest-Prince/Alpha",
       liveLink: "https://alpha-psi-umber.vercel.app/",
       image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1769063852/Screenshot_2026-01-22_120711_etvmwy.png",
-      featured: false,
+      featured: true,
       status: "Completed",
-      order: 3
+      order: 4
     },
     {
-      _id: "4",
+      _id: "5",
+      title: "BrightStar Energy Solar Platform",
+      description: "BrightStar Energy is a modern solar energy company website featuring solar panel installation services.",
+      longDescription: "A web application for solar panel installation companies to manage clients, where user can order for solar installation to their homes. The platform allows users to browse solar products, request quotes, and schedule installations. It also includes an admin dashboard for managing orders, inventory, and customer interactions.",
+      techStack: ["React", "D3.js","Firebase", "React-icons"],
+      category: "Frontend",
+      githubLink: "https://github.com/anupchauhanak6/websites/tree/main/BrightStarEnergy/frontend",
+      liveLink: "https://websites-eta-beryl.vercel.app/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1778079413/Screenshot_2026-05-06_202632_virbex.png",
+      featured: true,
+      status: "Completed",
+      order: 5
+    },
+    {
+      _id: "6",
+      title: "Nothing-Music",
+      description: "A modern Discord music bot with a powerful web dashboard built using Next.js. Supports high-quality streaming, playlists, and advanced server controls.",
+      longDescription: "A modern Discord music bot with a powerful web dashboard built using Next.js. Supports high-quality streaming, playlists, and advanced server controls.",
+      techStack: ["React","Discord.js", "Node.js", "mongodb", "Express"],
+      category: "Full Stack",
+      githubLink: "https://github.com/DevNest-Prince/Nothing-Muisc",
+      liveLink: "https://nothingbot.in/",
+      image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1778081996/Screenshot_2026-05-06_210942_bujrah.png",
+      featured: true,
+      status: "Completed",
+      order: 6
+    },
+
+    {
+      _id: "7",
       title: "Film Website ",
       description: "Film Website Project is an academic web development project",
       longDescription: "Film Website Project is an academic web development project assigned by the college, focused on designing and developing a complete website for a film. The objective was to present film-related content in a structured, visually appealing, and user-friendly format.",
@@ -156,10 +198,10 @@ export const fallbackData = {
       image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768041036/Screenshot_2026-01-10_160020_gftcrt.png",
       featured: false,
       status: "Completed",
-      order: 4
+      order: 7
     },
     {
-      _id: "5",
+      _id: "8",
       title: "School Website Redesign",
       description: "School Website Redesign is a UI-focused web project aimed at Modernizing. ",
       longDescription: "School Website Redesign is a UI-focused web project aimed at modernizing an outdated school website to improve usability, accessibility, and visual appeal. The redesign prioritizes a clean layout, intuitive navigation, and a student- and parent-friendly user experience.",
@@ -168,12 +210,12 @@ export const fallbackData = {
       githubLink:  "https://github.com/princekotharii/SGPS-Schol-Website",
       liveLink: "https://shivalikgangespublicschool.vercel.app/",
       image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768040149/Screenshot_2026-01-10_154456_uawtar.png",
-      featured: true,
+      featured: false,
       status: "Completed",
-      order: 5
+      order: 8
     },
     {
-      _id: "6",
+      _id: "9",
       title: "Samsung India Clone",
       description: "Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website.",
       longDescription: " 🚀 Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website. The goal of this project was to closely replicate a real-world commercial website while focusing on clean UI, structured layouts, and smooth user experience.",
@@ -184,7 +226,7 @@ export const fallbackData = {
       image: "https://res.cloudinary.com/dpolkd3ev/image/upload/v1768040689/Screenshot_2026-01-10_155413_m1u532.png",
       featured: false,
       status: "Completed",
-      order: 6
+      order: 9
     },
   ],
 
