@@ -28,17 +28,13 @@ export const sendEmail = async (formData) => {
       !EMAILJS_CONFIG.userId ||
       EMAILJS_CONFIG.serviceId === 'YOUR_SERVICE_ID'
     ) {
-      console.warn('EmailJS not configured. Please update constants.js with your credentials.')
+      console.warn('⚠️ EmailJS not configured. Please update .env.local with your credentials.')
       
-      // Simulate success for demo
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({
-            success: true,
-            message: 'Message sent successfully! (Demo mode - EmailJS not configured)',
-          })
-        }, 1000)
-      })
+      // Return error - do NOT show fake success
+      return {
+        success: false,
+        message: 'Email service not responding. Please try messaging me directly at prince.kothari@example.com',
+      }
     }
 
     // Prepare template parameters
