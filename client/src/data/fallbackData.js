@@ -104,8 +104,8 @@ export const fallbackData = {
     {
       _id: "1",
       title: "Roadengo-Bike Services",
-      description: "🪛 Roadengo-Bike Services is a web development project focused on providing a platform for bike services.",
-      longDescription: "🛠️ Roadengo-Bike Services is a web development project focused on providing a platform for bike services. The website allows users to book services, view service history, and manage their profiles.",
+      description: "Roadengo-Bike Services is a web development project focused on providing a platform for bike services.",
+      longDescription: "Roadengo-Bike Services is a web development project focused on providing a platform for bike services. The website allows users to book services, view service history, and manage their profiles.",
       techStack: ["React", "Node.js", "Material-UI","Nodemailer"],
       category: "Full Stack",
       githubLink: "https://github.com/DevNest-Prince/roadengo",
@@ -133,8 +133,8 @@ export const fallbackData = {
      {
       _id: "3",
       title: "Alpha-Lighting ",
-      description: "💡 Alpha is a modern lighting brand website featuring premium wall lights and fixtures.",
-      longDescription: "✨ Alpha is a fully responsive and visually polished website created for a modern lighting brand that specializes in wall lights, ceiling lights, table lamps, and ambient decorative lighting. The main objective of this project was to deliver a premium, minimal, and user-friendly experience that reflects the elegance and quality of the brand.",
+      description: "💡Alpha is a modern lighting brand website featuring premium wall lights and fixtures.",
+      longDescription: "Alpha is a fully responsive and visually polished website created for a modern lighting brand that specializes in wall lights, ceiling lights, table lamps, and ambient decorative lighting. The main objective of this project was to deliver a premium, minimal, and user-friendly experience that reflects the elegance and quality of the brand.",
       techStack: ["React", "Firebase", "React-icons"],
       category: "Frontend",
       githubLink: "https://github.com/DevNest-Prince/Alpha",
@@ -147,8 +147,8 @@ export const fallbackData = {
     {
       _id: "4",
       title: "Film Website ",
-      description: " 🎞️ Film Website Project is an academic web development project",
-      longDescription: " 🎬 Film Website Project is an academic web development project assigned by the college, focused on designing and developing a complete website for a film. The objective was to present film-related content in a structured, visually appealing, and user-friendly format.",
+      description: "Film Website Project is an academic web development project",
+      longDescription: "Film Website Project is an academic web development project assigned by the college, focused on designing and developing a complete website for a film. The objective was to present film-related content in a structured, visually appealing, and user-friendly format.",
       techStack: ["React", "Firebase"],
       category: "Frontend",
       githubLink: "https://github.com/princekotharii/Varnan-Films",
@@ -161,8 +161,8 @@ export const fallbackData = {
     {
       _id: "5",
       title: "School Website Redesign",
-      description: "📚 School Website Redesign is a UI-focused web project aimed at Modernizing. ",
-      longDescription: "🚌 School Website Redesign is a UI-focused web project aimed at modernizing an outdated school website to improve usability, accessibility, and visual appeal. The redesign prioritizes a clean layout, intuitive navigation, and a student- and parent-friendly user experience.",
+      description: "School Website Redesign is a UI-focused web project aimed at Modernizing. ",
+      longDescription: "School Website Redesign is a UI-focused web project aimed at modernizing an outdated school website to improve usability, accessibility, and visual appeal. The redesign prioritizes a clean layout, intuitive navigation, and a student- and parent-friendly user experience.",
       techStack: ["React", "Node.js", "MongoDB", "Express", "Tailwind CSS"],
       category: "Full Stack",
       githubLink:  "https://github.com/princekotharii/SGPS-Schol-Website",
@@ -175,7 +175,7 @@ export const fallbackData = {
     {
       _id: "6",
       title: "Samsung India Clone",
-      description: " 🍀 Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website.",
+      description: "Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website.",
       longDescription: " 🚀 Samsung India Clone Website is a fully responsive front-end web project inspired by the official Samsung India website. The goal of this project was to closely replicate a real-world commercial website while focusing on clean UI, structured layouts, and smooth user experience.",
       techStack: ["React", "Redux", "Node.js", "MongoDB", "Stripe"],
       category: "Full Stack",
